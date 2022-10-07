@@ -50,7 +50,7 @@ api.post('/logout', (req, res) => {
 
 api.post('/signup', async (req, res) => {
   const { name, email, password } = req.body;
-  const hash = await bcrypt.hashSync(password, 10);
+  const hash = await bcrypt.hash(password, 10);
 
   const validateUser = joi.object({
       name: joi.string().min(3).required(),
