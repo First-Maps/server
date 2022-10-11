@@ -15,7 +15,7 @@ export default async (req, res) => {
                 const locationsOfInterest = await LocationOfInterest.find({})
                 res.status(200).json({ success: true, data: locationsOfInterest })
             } catch(error){
-                res.status(400).json({ success: false })
+                res.status(400).json({ "error message" : error })
             }
             break;
 
@@ -24,7 +24,7 @@ export default async (req, res) => {
                 const locationOfInterest = await LocationOfInterest.create(req.body)
                 res.status(201).json({ success: true, data: locationOfInterest })
             } catch(error){
-                res.status(400).json({ success: false })
+                res.status(400).json({ "error message": error })
             }
             break;
         default:

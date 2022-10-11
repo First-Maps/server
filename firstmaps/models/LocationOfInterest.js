@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 
+
 const LocationsOfInterestSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -18,16 +19,22 @@ const LocationsOfInterestSchema = new mongoose.Schema({
         required: true,
         maxlength: [50, 'description can not be more than 500 characters'],
     },
-
-    // location: {
-    //     type: "Point",
-    //     required: true,
-    //     coordinates: [
-    //         49.12435,
-    //         122.23585
-    //     ]    
-    // }
+    address: {
+        type: String,
+        required: true,
+    },
+    location: {
+        type:{
+            type: String,
+            enum: ['Point']
+        },
+        coordinates: {
+            type: [Number],
+            index: '2dsphere'
+        }
+    }
 })
 
 // if the LocationsOfInterestSchema db exists, export it. if not, create it and export it
 module.exports = mongoose.models.LocationOfInterest || mongoose.model('LocationOfInterest', LocationsOfInterestSchema)
+
