@@ -19,15 +19,9 @@ const LocationsOfInterestSchema = new mongoose.Schema({
         required: true,
         maxlength: [50, 'description can not be more than 500 characters'],
     },
-    location: {
-        type:{
-            type: String,
-            enum: ['Point']
-        },
-        coordinates: {
-            type: [Number],
-            index: '2dsphere'
-        }
+    coordinates: {
+        type: [Number],   // [<longitude>, <latitude>]
+        index: '2d'   // create the geospatial index
     }
 })
 
