@@ -7,7 +7,7 @@ const LocationsOfInterestSchema = new mongoose.Schema({
         required: [true, 'please provide name of point of interest'],
         unique: true,
         trim: true,
-        maxlength: [50, 'name can not be more than 50 characters']
+        maxlength: [50, 'name cannot be more than 50 characters']
     },
     description: {
         type: String,
@@ -18,10 +18,6 @@ const LocationsOfInterestSchema = new mongoose.Schema({
         type: String,
         required: true,
         maxlength: [50, 'description can not be more than 500 characters'],
-    },
-    address: {
-        type: String,
-        required: true,
     },
     location: {
         type:{
